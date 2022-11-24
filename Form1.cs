@@ -2,6 +2,8 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        string operate = "";
+        decimal calculation = 0;
         public Form1()
         {
             InitializeComponent();
@@ -15,25 +17,31 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "%";
+            GetResultValue();
+            operate = "%";
+            result.Text =  "%";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "*";
+            GetResultValue();
+            operate = "*";
+            result.Text =  "*";
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "/";
+            GetResultValue();
+            operate = "/";
+            result.Text =  "/";
+
         }
         private void button5_Click(object sender, EventArgs e)
         {
             string data = result.Text;
             result.Text = data + "7";
+
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -48,8 +56,10 @@ namespace WinFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "-";
+            GetResultValue();
+            operate = "-";
+            result.Text =  "-";
+
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -66,14 +76,22 @@ namespace WinFormsApp1
 
         private void button11_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "6";
+            if(result.Text == "+"|| result.Text == "-" || result.Text == "/" || result.Text == "*" || result.Text == "%" )
+            {
+                result.Text = "6";
+            }
+            else
+            {
+                string data = result.Text;
+                result.Text = data + "6";
+            }
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "+";
+            GetResultValue();
+            operate = "+";
+            result.Text =  "+";
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -84,13 +102,29 @@ namespace WinFormsApp1
 
         private void button14_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "2";
+            if (result.Text == "+" || result.Text == "-" || result.Text == "/" || result.Text == "*" || result.Text == "%")
+            {
+                result.Text = "2";
+            }
+            else
+            {
+                string data = result.Text;
+                result.Text = data + "2";
+            }
+
         }
         private void button15_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + "3";
+            if (result.Text == "+" || result.Text == "-" || result.Text == "/" || result.Text == "*" || result.Text == "%")
+            {
+                result.Text = "3";
+            }
+            else
+            {
+                string data = result.Text;
+                result.Text = data + "3";
+            }
+            
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -101,15 +135,16 @@ namespace WinFormsApp1
                 result.Text = data + ")";
             }
             else
-            {
+            {        
                 result.Text = "("+data;
             }
 
         }
         private void button17_Click(object sender, EventArgs e)
         {
-            string data = result.Text;
-            result.Text = data + ".";
+            GetResultValue();
+            operate = ".";          
+            result.Text =  ".";
         }
         private void button18_Click(object sender, EventArgs e)
         {
@@ -124,8 +159,43 @@ namespace WinFormsApp1
         }
         private void button20_Click(object sender, EventArgs e)
         {
+            decimal firstNum = calculation;
+            decimal secondNum = Convert.ToDecimal(result.Text);
+            switch(operate)
+            {
+                case "+":
+                    calculation = (firstNum + secondNum);
+                    result.Text = calculation.ToString();
+                    break;
+                case "-":
+                    calculation = (firstNum - secondNum);
+                    result.Text = calculation.ToString();
+                    break;
+                case "*":
+                    calculation = (firstNum * secondNum);
+                    result.Text = calculation.ToString();
+                    break;
+                case "/":
+                    calculation = (firstNum / secondNum);
+                    result.Text = calculation.ToString();
+                    break;
+                case "%":
+                    calculation = (firstNum % secondNum);
+                    result.Text = calculation.ToString();
+                    break;
+            }
             
         }
+        public void GetResultValue()
+        {
+            if(result.Text !=""&& result.Text != "+" && result.Text != "/" && result.Text != "x" && result.Text != "-" && result.Text != "%" && result.Text != ".")
+            {
+                calculation = Convert.ToDecimal(result.Text);
+               
+
+            }
+        }
+        
 
 
 
