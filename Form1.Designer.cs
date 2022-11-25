@@ -50,6 +50,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.result = new System.Windows.Forms.TextBox();
+            this.button21 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -307,11 +308,22 @@
             this.result.Size = new System.Drawing.Size(292, 71);
             this.result.TabIndex = 1;
             // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(85, 438);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(251, 45);
+            this.button21.TabIndex = 2;
+            this.button21.Text = "Open new form";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 661);
+            this.Controls.Add(this.button21);
             this.Controls.Add(this.result);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
@@ -346,5 +358,6 @@
         private Button button2;
         private Button button3;
         private TextBox result;
+        private Button button21;
     }
 }
