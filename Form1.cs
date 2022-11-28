@@ -1,9 +1,19 @@
+using System.Data.SqlClient;
+
 namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
         string operate = "";
         decimal calculation = 0;
+
+        SqlConnection con = new SqlConnection(
+            @"Data Source= .\SQLEXPRESS; 
+            Initial Catalog= bit3rdsem;
+            user id =sa ; 
+            password =kist@123;");
+        //if error in slash it is due to string so write \\ double slash or @
+
         public Form1()
         {
             InitializeComponent();
@@ -239,14 +249,28 @@ namespace WinFormsApp1
         }
         private void button21_Click(object sender, EventArgs e)
         {
-           this.Hide();        //hide current form and open new one 
-           Form2 EmployeeForm = new Form2();
-            // EmployeeForm.ShowDialog();
-            //The Show function shows the form in a non modal form. This means that you can click on the parent form.
-           //ShowDialog shows the form modally, meaning you cannot go to the parent form
-                EmployeeForm.Show();
+            //this.Hide();        //hide current form and open new one 
+            //Form2 EmployeeForm = new Form2();
+            // // EmployeeForm.ShowDialog();
+            // //The Show function shows the form in a non modal form. This means that you can click on the parent form.
+            ////ShowDialog shows the form modally, meaning you cannot go to the parent form
+            //     EmployeeForm.Show();
+            try
+            {
+                con.Open();
+                string query = @"Insert into Students values('upasana', 'thapathali', '9843816723','kist'),
+    ('sova', 'tinkune', '9857687574','kist'),
+    ('rinjha', 'jawlakhel', '9855647809','kist')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("saved Sucessfully");
 
+            }
+            catch(Exception ex)
 
+            {
+                MessageBox.Show("Error: " + ex.InnerException);
+            }
         }
         public void GetResultValue()
         {
